@@ -1,17 +1,53 @@
 package Lessons.Lesson3AbstractClassesKeywordFinalInterfaces;
 
+import jdk.internal.joptsimple.internal.Strings;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.security.spec.ECField;
 import java.util.Objects;
 
 public class Order {
 
-    public final int number;
-    public final String owner;
+    public int number;
+    public String owner;
     private int hashCode = 0;
 
     public Order(int number, String owner) {
         this.owner = owner;
         this.number = number;
         hashCode = this.hashCode();
+    }
+
+    public Order(String url) {
+       try {
+           File file = new File(url);
+           FileReader fileReader = new FileReader(file);
+           BufferedReader bufferedReader = new BufferedReader(fileReader);
+           String line;
+           while (!Strings.isNullOrEmpty(line = bufferedReader.readLine())){
+               String[] splitedLine = line.split(":");
+               String key = splitedLine[0].trim();
+               String value = splitedLine[1].trim();
+               switch (key) {
+                   case "number":
+                       this.number = Integer.valueOf(value);
+                       break;
+                   case "owner":
+                       this.owner = value;
+                       break;
+               }
+
+           }
+       } catch (Exception e) {
+           this.owner = null;
+           this.number = -1;
+           throw new RuntimeException(e);
+       } finally {
+
+       }
     }
 
     public Order changeNumber (int number){
