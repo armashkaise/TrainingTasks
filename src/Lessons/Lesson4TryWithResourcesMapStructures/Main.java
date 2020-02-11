@@ -18,7 +18,7 @@ public class Main {
         System.out.println(mapka.get("dfdsf"));
         System.out.println();
 
-        //двоичное дерево поиска
+        //Бинарное дерево поиска
         TreeStringString tree = new TreeStringString();
         tree.put("aaa", "AAA");
         tree.put("bbb", "BBB");
@@ -31,5 +31,17 @@ public class Main {
         System.out.println(tree.get("ccc"));
         System.out.println(tree.get("AaAaAa"));
         System.out.println(tree.get("AaAaBB"));
+        System.out.println();
+
+        //Поиск в массиве
+        ArrayStringString array = new ArrayStringString();
+        array.put("aaa", "AAA");
+        array.put("bbb", "BBB");
+        array.put("ccc", "CCC");
+        array.put("AaAaAa", "Kart Arman");
+        array.put("AaAaBB", "Kart Arman1");
+        System.out.println(array.get("bbb"));
+        System.out.println(array.get("AaAaAa"));
+        System.out.println(array.get("AaAaBB"));
     }
 }
