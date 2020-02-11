@@ -43,7 +43,6 @@ public class StupedStringString implements MapStringString {
             head = current;
         } else {
             Bucket last = head;
-            boolean itWas;
             while (Objects.nonNull(last.next) && last.keyHash != key.hashCode()){
                 last = last.next;
             }

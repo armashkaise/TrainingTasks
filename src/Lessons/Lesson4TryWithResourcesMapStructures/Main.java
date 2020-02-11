@@ -11,11 +11,24 @@ public class Main {
         MapStringString mapka = new StupedStringString();
 
         mapka.put("aaa", "AAA");
-        mapka.put("armashkaise", "Kart Arman");
-        mapka.put("armashkaise", "Kart Arman1");
+        mapka.put("AaAaAa", "Kart Arman");
+        mapka.put("AaAaBB", "Kart Arman1");
         mapka.put("bbb", "BBB");
-        mapka.put("aaa", "AAA111");
-        System.out.println(mapka.get("armashkaise"));
+        System.out.println(mapka.get("AaAaAa"));
         System.out.println(mapka.get("dfdsf"));
+
+        //двоичное дерево поиска
+        TreeStringString tree = new TreeStringString();
+
+        System.out.println("AaAaAa".hashCode());
+
+        tree.put("aaa", "AAA");
+        tree.put("bbb", "BBB");
+        tree.put("ccc", "CCC");
+        tree.put("aba", "ABA");
+        tree.put("aca", "ACA");
+        tree.put("AaAaAa", "Kart Arman");
+        tree.put("AaAaBB", "Kart Arman1");
+
     }
 }
