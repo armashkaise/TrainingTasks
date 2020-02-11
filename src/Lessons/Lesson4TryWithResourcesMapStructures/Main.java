@@ -3,23 +3,19 @@ package Lessons.Lesson4TryWithResourcesMapStructures;
 import Lessons.Lesson3AbstractClassesKeywordFinalInterfaces.Order;
 import Lessons.Lesson3AbstractClassesKeywordFinalInterfaces.OutOfBoundException;
 
+
 import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws OutOfBoundException {
-        BufferedReader bufferedReader = null;
-        Order order = new Order("/1.txt");
-        System.out.println(order);
+        MapStringString mapka = new StupedStringString();
 
-//        try {
-//            bufferedReader = new BufferedReader(new FileReader(new File()));
-//            bufferedReader.readLine();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
+        mapka.put("aaa", "AAA");
+        mapka.put("armashkaise", "Kart Arman");
+        mapka.put("armashkaise", "Kart Arman1");
+        mapka.put("bbb", "BBB");
+        mapka.put("aaa", "AAA111");
+        System.out.println(mapka.get("armashkaise"));
+        System.out.println(mapka.get("dfdsf"));
     }
 }

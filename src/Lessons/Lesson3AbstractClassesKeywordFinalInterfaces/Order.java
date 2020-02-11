@@ -2,10 +2,7 @@ package Lessons.Lesson3AbstractClassesKeywordFinalInterfaces;
 
 import jdk.internal.joptsimple.internal.Strings;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.security.spec.ECField;
 import java.util.Objects;
 
@@ -22,12 +19,16 @@ public class Order {
     }
 
     public Order(String url) {
-       try {
-           File file = new File(url);
-           FileReader fileReader = new FileReader(file);
-           BufferedReader bufferedReader = new BufferedReader(fileReader);
+        //FileReader fileReader = null;
+       try ( FileReader fileReader = new FileReader(new File(url));
+             BufferedReader bufferedReader = new BufferedReader(fileReader);) {
+
+//           url = "/1.txt";
+//           File file = ;
+
+
            String line;
-           while (!Strings.isNullOrEmpty(line = bufferedReader.readLine())){
+           while (Objects.nonNull(line = bufferedReader.readLine())){
                String[] splitedLine = line.split(":");
                String key = splitedLine[0].trim();
                String value = splitedLine[1].trim();
