@@ -22,8 +22,7 @@ public class TreeStringString implements MapStringString {
         public final Node[] nodes = new Node[100];
         public Bucket left;
         public Bucket right;
-
-       public Bucket(int keyHash) {
+        public Bucket(int keyHash) {
            this.keyHash = keyHash;
        }
    }
@@ -34,18 +33,12 @@ public class TreeStringString implements MapStringString {
         if (Objects.isNull(key))
             throw new RuntimeException("key is null");
         Bucket current = head;
-
-//        while (Objects.nonNull(current) && current.keyHash != key.hashCode()){
-//            current = current.next;
-//        }
         if (Objects.isNull(current)){
             current = new Bucket(key.hashCode());
             countBucket++;
         }
-
         if (Objects.isNull(head)){
             head = current;
-
         } else {
             for (int i = 0; i < countBucket; i++) {
                 Bucket someBucket= current;
@@ -62,31 +55,18 @@ public class TreeStringString implements MapStringString {
                     countBucket++;
                     if (current.keyHash < someBucket.keyHash) {
                         someBucket.left = current;
-//                        current.right = someBucket;
                     }
                     else  {
                         someBucket.right = current;
-//                        current.left = someBucket;
                     }
-//                    countBucket++;
                     break;
                 }
             }
-
-//            Bucket last = head;
-//            while (Objects.nonNull(last.next) && last.keyHash != key.hashCode()){
-//                last = last.next;
-//            }
-//            if (last.keyHash != key.hashCode())
-//                last.next = current;
         }
-
-
         Node[] nodes = current.nodes;
         int i = 0;
         for (; Objects.nonNull(nodes[i]) && !nodes[i].key.equals(key); i++) ;
         nodes[i] = new Node(key, value);
-
     }
 
     @Override
@@ -95,12 +75,17 @@ public class TreeStringString implements MapStringString {
             throw new RuntimeException("Key is null");
         }
         Bucket bucket = head;
-        while (Objects.nonNull(bucket) && bucket.keyHash != key.hashCode()){
-//            bucket = bucket.next;
-        }
-        if (Objects.isNull(bucket)) return null;
-        for (Node node : bucket.nodes) {
-            if (node.key.equals(key)) return node.value;
+        for (int i = 0; i < countBucket; i++) {
+            if (bucket.keyHash == key.hashCode()) {
+                for (Node node : bucket.nodes) {
+                    if (node.key.equals(key)) return node.value;
+                }
+            }
+            else if (bucket.keyHash < key.hashCode()){
+                bucket = bucket.right;
+            } else {//больше
+                bucket = bucket.left;
+            }
         }
         return null;
     }

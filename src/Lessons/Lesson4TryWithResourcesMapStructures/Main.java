@@ -16,12 +16,10 @@ public class Main {
         mapka.put("bbb", "BBB");
         System.out.println(mapka.get("AaAaAa"));
         System.out.println(mapka.get("dfdsf"));
+        System.out.println();
 
         //двоичное дерево поиска
         TreeStringString tree = new TreeStringString();
-
-        System.out.println("AaAaAa".hashCode());
-
         tree.put("aaa", "AAA");
         tree.put("bbb", "BBB");
         tree.put("ccc", "CCC");
@@ -30,5 +28,8 @@ public class Main {
         tree.put("AaAaAa", "Kart Arman");
         tree.put("AaAaBB", "Kart Arman1");
 
+        System.out.println(tree.get("ccc"));
+        System.out.println(tree.get("AaAaAa"));
+        System.out.println(tree.get("AaAaBB"));
     }
 }
