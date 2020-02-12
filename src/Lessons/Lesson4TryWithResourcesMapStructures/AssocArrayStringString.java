@@ -59,15 +59,13 @@ public class AssocArrayStringString implements MapStringString {
             while (Objects.nonNull(someNode) && !someNode.key.equals(key)){
                 someNode = someNode.next;
             }
-            someNode = new Node(key, value);
-            System.out.println(someNode);
+            if (Objects.isNull(someNode)){
+                someNode = new Node(key, value);
+            } else {
+                someNode.value = value;
+            }
         }
 
-
-//        Node[] nodes = currentBucket.nodes;
-//        int i = 0;
-//        for (; Objects.nonNull(nodes[i]) && !nodes[i].key.equals(key); i++) ;
-//        nodes[i] = new Node(key, value);
     }
 
     @Override
