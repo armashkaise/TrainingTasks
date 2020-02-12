@@ -8,6 +8,7 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) throws OutOfBoundException {
+
         MapStringString mapka = new StupedStringString();
 
         mapka.put("aaa", "AAA");
@@ -33,11 +34,11 @@ public class Main {
         System.out.println(tree.get("AaAaBB"));
         System.out.println();
 
-        //Поиск в массиве
-        ArrayStringString array = new ArrayStringString();
-        array.put("aaa", "AAA");
-        array.put("bbb", "BBB");
-        array.put("ccc", "CCC");
+        //Ассоциативный массив
+        AssocArrayStringString array = new AssocArrayStringString();
+//        array.put("aaa", "AAA");
+//        array.put("bbb", "BBB");
+//        array.put("ccc", "CCC");
         array.put("AaAaAa", "Kart Arman");
         array.put("AaAaBB", "Kart Arman1");
         System.out.println(array.get("bbb"));
