@@ -54,15 +54,13 @@ public class AssocArrayStringString implements MapStringString {
             countNode++;
         } else {
             currentNode = array[index];
-            Node someNode;
-            someNode = currentNode.next;
-            while (Objects.nonNull(someNode) && !someNode.key.equals(key)){
-                someNode = someNode.next;
+            while (Objects.nonNull(currentNode.next) && !currentNode.key.equals(key)){
+                currentNode = currentNode.next;
             }
-            if (Objects.isNull(someNode)){
-                someNode = new Node(key, value);
+            if (!currentNode.key.equals(key)){
+                currentNode.next = new Node(key, value);
             } else {
-                someNode.value = value;
+                currentNode.value = value;
             }
         }
 
@@ -70,16 +68,19 @@ public class AssocArrayStringString implements MapStringString {
 
     @Override
     public String get(String key) {
-//        if (Objects.isNull(key)){
-//            throw new RuntimeException("Key is null");
-//        }
-//        int index = arrayLength & key.hashCode();
-//        Bucket bucket = array[index];
-//        if (Objects.isNull(bucket)) return null;
-//
-//        for (Node node : bucket.nodes) {
-//            if (node.key.equals(key)) return node.value;
-//        }
+        int index = arrayLength & key.hashCode();
+        if (Objects.isNull(array[index])) {
+            return "Значение не найдено";
+        } else {
+            Node currentNode = array[index];
+            Node someNode;
+            someNode = currentNode;
+            while (Objects.nonNull(someNode) && !someNode.key.equals(key)){
+                someNode = someNode.next;
+            }
+            if (Objects.nonNull(someNode))
+                return someNode.value;
+        }
         return null;
     }
 }

@@ -36,9 +36,9 @@ public class Main {
 
         //Ассоциативный массив
         AssocArrayStringString array = new AssocArrayStringString();
-//        array.put("aaa", "AAA");
-//        array.put("bbb", "BBB");
-//        array.put("ccc", "CCC");
+        array.put("aaa", "AAA");
+        array.put("bbb", "BBB");
+        array.put("ccc", "CCC");
         array.put("AaAaAa", "Kart Arman");
         array.put("AaAaBB", "Kart Arman1");
         System.out.println(array.get("bbb"));
