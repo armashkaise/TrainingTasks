@@ -70,7 +70,7 @@ public class AssocArrayStringString implements MapStringString {
     public String get(String key) {
         int index = arrayLength & key.hashCode();
         if (Objects.isNull(array[index])) {
-            return "Значение не найдено";
+            return null;
         } else {
             Node currentNode = array[index];
             Node someNode;

@@ -41,7 +41,7 @@ public class Main {
         array.put("ccc", "CCC");
         array.put("AaAaAa", "Kart Arman");
         array.put("AaAaBB", "Kart Arman1");
-        System.out.println(array.get("bbb"));
+        System.out.println(array.get("рпнкекн"));
         System.out.println(array.get("AaAaAa"));
         System.out.println(array.get("AaAaBB"));
     }
