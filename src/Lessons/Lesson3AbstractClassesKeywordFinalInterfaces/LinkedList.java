@@ -3,11 +3,11 @@ package Lessons.Lesson3AbstractClassesKeywordFinalInterfaces;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class IntLinkedList implements IntList{
-    private Node head;
+public class LinkedList<T> implements List<T> {
+    private Node<T> head;
     private int size;
 
-    public void add(int value) {
+    public void add(T value) {
         Node newNode = new Node(value);
         if (Objects.isNull(head))
             head = newNode;
@@ -22,14 +22,14 @@ public class IntLinkedList implements IntList{
 
     }
 
-    public int get(int index) throws OutOfBoundException{
+    public T get(int index) throws OutOfBoundException{
 //        if (index < 0)
 //            throw new OutOfBoundException("Index outs of bound.");
         try {
             if (index < 0)
                 throw new OutOfBoundException("Index outs of bound.");
             if (index == 0) return head.value;
-            Node last = head;
+            Node<T> last = head;
             for (int i = 1; i <= index; i++) {
                 last = last.next;
             }
@@ -37,7 +37,7 @@ public class IntLinkedList implements IntList{
         } catch (NullPointerException e) {
             System.out.println("Значение индекса больше максимального индекса.");
         }
-        return -1;
+        return null;
     }
 
     public int size() {
@@ -59,11 +59,11 @@ public class IntLinkedList implements IntList{
         return "";
     }
 
-    class Node {
-        int value;
+    class Node<T> {
+        T value;
         Node next;
 
-        public Node(int value) {
+        public Node(T value) {
             this.value = value;
 
         }

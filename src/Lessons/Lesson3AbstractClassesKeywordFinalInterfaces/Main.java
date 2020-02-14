@@ -3,7 +3,13 @@ package Lessons.Lesson3AbstractClassesKeywordFinalInterfaces;
 public class Main {
     public static void main(String[] args) throws OutOfBoundException{
 
-        IntList intLinkedList = new IntLinkedList();
+        var humanBuilder = new Human.HumanBuilder();
+        Human build = humanBuilder.withName("Ivan").withSurname("Ivanov").withDob("01/01/1980").build();
+
+        var animalBuilder = new Animal.AnimalBuilder();
+        var animal = animalBuilder.addName("Los").addColLimb(4).build();
+
+        List<Integer> intLinkedList = new LinkedList<>();
         intLinkedList.add(1);
         intLinkedList.add(2);
         intLinkedList.add(3);
@@ -17,7 +23,7 @@ public class Main {
 //        }
     }
 
-    private static boolean doIt(IntList intLinkedList) {
+    private static boolean doIt(List intLinkedList) {
         try {
             System.out.println(intLinkedList.get(2));
             System.out.println(intLinkedList.get(4));
