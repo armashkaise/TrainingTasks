@@ -2,15 +2,15 @@ package Lessons.Lesson4TryWithResourcesMapStructures;
 
 import java.util.Objects;
 
-public class StupedStringString implements MapStringString {
+public class StupedStringString<K, V> implements MapStringString<K, V> {
 
     private Bucket head;
 
     class Node {
         public final String key;
-        public String value;
+        public T value;
 
-        public Node(String key, String value) {
+        public Node(String key, T value) {
             this.key = key;
             this.value = value;
         }
@@ -28,7 +28,7 @@ public class StupedStringString implements MapStringString {
 
 
     @Override
-    public void put(String key, String value) {
+    public void put(String key, T value) {
         if (Objects.isNull(key))
             throw new RuntimeException("key is null");
         Bucket current = head;
@@ -58,7 +58,7 @@ public class StupedStringString implements MapStringString {
     }
 
     @Override
-    public String get(String key) {
+    public T get(String key) {
         if (Objects.isNull(key)){
             throw new RuntimeException("Key is null");
         }
