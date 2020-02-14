@@ -27,14 +27,14 @@ public class Main {
         System.out.println();
 
         //Ассоциативный массив
-//        AssocArrayString array = new AssocArrayString();
-//        array.put("aaa", "AAA");
+        AssocArrayString array = new AssocArrayString();
+        array.put("aaa", "AAA");
 //        array.put("bbb", "BBB");
 //        array.put("ccc", "CCC");
-//        array.put("AaAaAa", "Kart Arman");
-//        array.put("AaAaBB", "Kart Arman1");
-//        System.out.println(array.get("рпнкекн"));
-//        System.out.println(array.get("AaAaAa"));
-//        System.out.println(array.get("AaAaBB"));
+        array.put("AaAaAa", "Kart Arman");
+        array.put("AaAaBB", "Kart Arman1");
+        System.out.println(array.get("рпнкекн"));
+        System.out.println(array.get("AaAaAa"));
+        System.out.println(array.get("AaAaBB"));
     }
 }
