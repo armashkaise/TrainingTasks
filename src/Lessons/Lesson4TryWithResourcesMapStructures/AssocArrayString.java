@@ -38,11 +38,6 @@ public class AssocArrayString <K, V> implements MapString <K, V> {
         }
     }
 
-//   class Bucket {
-//        public final Node[] nodes = new Node[100];
-//   }
-
-
     @Override
     public void put(K key, V value) {
         if (Objects.isNull(key))
