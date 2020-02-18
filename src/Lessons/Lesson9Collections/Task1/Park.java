@@ -2,30 +2,15 @@ package Lessons.Lesson9Collections.Task1;
 
 import java.util.Objects;
 
-public class Home<T> extends CityObject implements Calculable<T> {
-    private String color;
-    private int countFloor;
-    private String typeHome;
-    private Damage damage;
+public class Park<T> extends CityObject implements Calculable<T> {
+    private String parkName;
+//    private Damage damage;
     private int countDamage;
-//    double lenght;
-//    double width;
 
-    private Home(double lenght, double width, String color, int countFloor, String typeHome) {
+    private Park(double lenght, double width, String parkName) {
         this.lenght = lenght;
         this.width = width;
-        this.color = color;
-        this.countFloor = countFloor;
-        this.typeHome = typeHome;
-    }
-
-    @Override
-    public String toString() {
-        return "Home{" +
-                "color='" + color + '\'' +
-                ", countFloor=" + countFloor +
-                ", typeHome='" + typeHome + '\'' +
-                '}';
+        this.parkName = parkName;
     }
 
     @Override
@@ -38,61 +23,36 @@ public class Home<T> extends CityObject implements Calculable<T> {
         }
         else {
             while (Objects.nonNull(currentDamage.next)) {
-                //!currentDamage.equals(damage) &&
                 currentDamage = currentDamage.next;
             }
             currentDamage.next = new Damage(name, lenght, width);
-
         }
         countDamage++;
         return (T) this;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public int getCountFloor() {
-        return countFloor;
-    }
-
-    public void setCountFloor(int countFloor) {
-        this.countFloor = countFloor;
-    }
-
-    public String getTypeHome() {
-        return typeHome;
-    }
-
-    public void setTypeHome(String typeHome) {
-        this.typeHome = typeHome;
     }
 
     public Damage getDamage() {
         return damage;
     }
 
-
+    @Override
+    public String toString() {
+        return "Park{" +
+                "parkName='" + parkName + '\'' +
+                '}';
+    }
 
     public static class Builder {
-        private String color;
-        private int countFloor;
         private double lenght;
         private double width;
-        private String typeHome;
+        private String parkName;
 
-        public Home build() {
-            Home home = new Home(lenght, width, color, countFloor, typeHome);
+        public Park build() {
+            Park park = new Park(lenght, width, parkName);
             lenght = 0;
             width = 0;
-            color = null;
-            countFloor = 0;
-            typeHome = null;
-            return home;
+            parkName = null;
+            return park;
         }
 
         public Builder setLenght(double lenght){
@@ -105,19 +65,10 @@ public class Home<T> extends CityObject implements Calculable<T> {
             return this;
         }
 
-        public Builder setColor(String color){
-            this.color = color;
+        public Builder setParkName(String parkName){
+            this.parkName = parkName;
             return this;
         }
 
-        public Builder setCountFloor(int countFloor){
-            this.countFloor = countFloor;
-            return this;
-        }
-
-        public Builder setTypeHome(String typeHome){
-            this.typeHome = typeHome;
-            return this;
-        }
     }
 }

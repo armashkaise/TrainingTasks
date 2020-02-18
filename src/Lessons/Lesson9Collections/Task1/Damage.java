@@ -1,4 +1,4 @@
-package Lessons.Lesson9Collections;
+package Lessons.Lesson9Collections.Task1;
 
 import java.util.Objects;
 

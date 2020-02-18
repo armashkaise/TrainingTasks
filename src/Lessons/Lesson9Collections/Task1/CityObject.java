@@ -1,7 +1,8 @@
-package Lessons.Lesson9Collections;
+package Lessons.Lesson9Collections.Task1;
 
 public abstract class CityObject {
-    protected double lenght;
-    protected double width;
+    public double lenght;
+    public double width;
+    public Damage damage;
 
 }

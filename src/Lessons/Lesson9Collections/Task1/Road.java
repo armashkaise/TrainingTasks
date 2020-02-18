@@ -2,15 +2,18 @@ package Lessons.Lesson9Collections.Task1;
 
 import java.util.Objects;
 
-public class Park<T> extends CityObject implements Calculable<T> {
-    private String parkName;
-//    private Damage damage;
+public class Road<T> extends CityObject implements Calculable<T> {
+    private String roadName;
+    private String coating;
+
     private int countDamage;
 
-    private Park(double lenght, double width, String parkName) {
+    private Road(double lenght, double width, String roadName, String coating) {
         this.lenght = lenght;
         this.width = width;
-        this.parkName = parkName;
+        this.roadName = roadName;
+        this.coating = coating;
+
     }
 
     @Override
@@ -37,22 +40,25 @@ public class Park<T> extends CityObject implements Calculable<T> {
 
     @Override
     public String toString() {
-        return "Park{" +
-                "parkName='" + parkName + '\'' +
+        return "Road{" +
+                "roadName='" + roadName + '\'' +
+                ", coating='" + coating + '\'' +
                 '}';
     }
 
     public static class Builder {
         private double lenght;
         private double width;
-        private String parkName;
+        private String roadName;
+        private String coating;;
 
-        public Park build() {
-            Park park = new Park(lenght, width, parkName);
+        public Road build() {
+            Road road = new Road(lenght, width, roadName, coating);
             lenght = 0;
             width = 0;
-            parkName = null;
-            return park;
+            roadName = null;
+            coating = null;
+            return road;
         }
 
         public Builder setLenght(double lenght){
@@ -65,8 +71,13 @@ public class Park<T> extends CityObject implements Calculable<T> {
             return this;
         }
 
-        public Builder setParkName(String parkName){
-            this.parkName = parkName;
+        public Builder setRoadName(String roadName){
+            this.roadName = roadName;
+            return this;
+        }
+
+        public Builder setCoating(String coating){
+            this.coating = coating;
             return this;
         }
 

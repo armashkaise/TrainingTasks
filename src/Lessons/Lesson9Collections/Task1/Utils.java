@@ -1,4 +1,4 @@
-package Lessons.Lesson9Collections;
+package Lessons.Lesson9Collections.Task1;
 
 import Lessons.Lesson9Collections.Task1.CityObject;
 import Lessons.Lesson9Collections.Task1.Damage;
