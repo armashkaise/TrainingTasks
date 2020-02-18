@@ -33,7 +33,7 @@ public class Human {
         }
     }
 
-    static class HumanBuilder {
+    public static class HumanBuilder {
         private String name;
         private String surname;
         private String dob;
