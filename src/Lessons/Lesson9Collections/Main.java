@@ -4,9 +4,9 @@ import Lessons.Lesson9Collections.Task1.Home;
 import Lessons.Lesson9Collections.Task1.Park;
 import Lessons.Lesson9Collections.Task1.Road;
 import Lessons.Lesson9Collections.Task1.Utils;
+import Lessons.Lesson9Collections.Task2.Person;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -99,9 +99,37 @@ public class Main {
             System.out.println("Общая квадратура Damage " + Utils.calcSquareDamage(road));
         }
         System.out.println();
-
+        System.out.println();
 //*****************************************************ЗАДАНИЕ №2***********************************************
+        List<Person> persons = new ArrayList<>();
+        persons.add(new Person("Иванов И.И.", "рабочий"));
+        persons.add(new Person("Петров П.П.", "менеджер"));
+        persons.add(new Person("Сидоров С.С.", "начальник"));
+        persons.add(new Person("Николаев Н.Н.", "рабочий"));
+        persons.add(new Person("Лелюк Л.Л.", "начальник"));
+        persons.add(new Person("Орлов О.О.", "рабочий"));
+        persons.add(new Person("Литовка Л.Л.", "менеджер"));
+        persons.add(new Person("Мартынчик М.М.", "начальник"));
+        persons.add(new Person("Бурлаев Б.Б.", "менеджер"));
 
+        Collections.sort(persons);
+
+        printArray(persons);
+
+        String[] items = {"начальник", "менеджер", "рабочий"};
+        Comparator<Person> comparator = Comparator.comparing(Person->Person.getRank());
+        Collections.sort(persons, comparator);
+        printArray(persons);
+//*****end
 
     }
+
+    private static void printArray(List<Person> persons) {
+        for (Person person : persons) {
+            System.out.println(person);
+        }
+        System.out.println();
+    }
+
+
 }
