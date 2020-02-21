@@ -120,7 +120,7 @@ public class Main {
         Comparator<Person> comparator = Comparator.comparing(Person->Person.getRank());
         Collections.sort(persons, comparator);
         printArray(persons);
-//*****end
+//*****end 21/02/2020
 
     }
 

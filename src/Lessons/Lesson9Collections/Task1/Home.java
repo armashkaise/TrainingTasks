@@ -1,5 +1,8 @@
 package Lessons.Lesson9Collections.Task1;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 public class Home<T> extends CityObject implements Calculable<T> {
@@ -7,8 +10,9 @@ public class Home<T> extends CityObject implements Calculable<T> {
     private int countFloor;
     private String typeHome;
     private String adress;
+//    private List<Damage> damage;
 
-    private int countDamage;
+//    private int countDamage;
 //    double lenght;
 //    double width;
 
@@ -19,6 +23,7 @@ public class Home<T> extends CityObject implements Calculable<T> {
         this.adress = adress;
         this.countFloor = countFloor;
         this.typeHome = typeHome;
+        this.damage = new ArrayList<>();
     }
 
     @Override
@@ -33,21 +38,25 @@ public class Home<T> extends CityObject implements Calculable<T> {
 
     @Override
     public T addDamage(String name, double lenght, double width) {
+
         if (Objects.isNull(name)) return null;
-        Damage currentDamage = this.damage;
 
-        if (Objects.isNull(currentDamage)) {
-            this.damage = new Damage(name, lenght, width);
-        }
-        else {
-            while (Objects.nonNull(currentDamage.next)) {
-                //!currentDamage.equals(damage) &&
-                currentDamage = currentDamage.next;
-            }
-            currentDamage.next = new Damage(name, lenght, width);
-
-        }
-        countDamage++;
+//        Damage currentDamage = this.damage;
+//
+//        if (Objects.nonNull(damage)) {
+//            damage.add(T) name);
+//        Damage currentDamage = ;
+            damage.add(new Damage(name, lenght, width));
+//        }
+//        else {
+//            while (Objects.nonNull(currentDamage.next)) {
+//                //!currentDamage.equals(damage) &&
+//                currentDamage = currentDamage.next;
+//            }
+//            currentDamage.next = new Damage(name, lenght, width);
+//
+//        }
+//        countDamage++;
         return (T) this;
     }
 
@@ -79,9 +88,9 @@ public class Home<T> extends CityObject implements Calculable<T> {
         this.typeHome = typeHome;
     }
 
-    public Damage getDamage() {
-        return damage;
-    }
+//    public Damage getDamage() {
+//        return damage;
+//    }
 
 
 

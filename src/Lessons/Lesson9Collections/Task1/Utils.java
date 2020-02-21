@@ -15,12 +15,12 @@ public class Utils {
 //    double calcLength();
     public static <T extends CityObject> double calcSquareDamage(T object){
         if (Objects.isNull(object)) return 0;
-        Damage damage = object.damage;
+//        Damage damage = object.damage;
         double square = 0;
-        while (Objects.nonNull(damage)){
-            square += damage.getLenght() * damage.getWidth();
-            damage = damage.next;
-        }
+//        while (Objects.nonNull(damage)){
+//            square += damage.getLenght() * damage.getWidth();
+//            damage = damage.next;
+//        }
         return square;
     }
 }

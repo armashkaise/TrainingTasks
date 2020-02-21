@@ -1,5 +1,6 @@
 package Lessons.Lesson9Collections.Task1;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Road<T> extends CityObject implements Calculable<T> {
@@ -13,30 +14,30 @@ public class Road<T> extends CityObject implements Calculable<T> {
         this.width = width;
         this.roadName = roadName;
         this.coating = coating;
-
+        this.damage = new ArrayList<>();
     }
 
     @Override
     public T addDamage(String name, double lenght, double width) {
         if (Objects.isNull(name)) return null;
-        Damage currentDamage = this.damage;
+//        Damage currentDamage = this.damage;
 
-        if (Objects.isNull(currentDamage)) {
-            this.damage = new Damage(name, lenght, width);
-        }
-        else {
-            while (Objects.nonNull(currentDamage.next)) {
-                currentDamage = currentDamage.next;
-            }
-            currentDamage.next = new Damage(name, lenght, width);
-        }
-        countDamage++;
+//        if (Objects.isNull(currentDamage)) {
+            damage.add(new Damage(name, lenght, width));
+//        }
+//        else {
+//            while (Objects.nonNull(currentDamage.next)) {
+//                currentDamage = currentDamage.next;
+//            }
+//            currentDamage.next = new Damage(name, lenght, width);
+//        }
+//        countDamage++;
         return (T) this;
     }
 
-    public Damage getDamage() {
-        return damage;
-    }
+//    public Damage getDamage() {
+//        return damage;
+//    }
 
     @Override
     public String toString() {
