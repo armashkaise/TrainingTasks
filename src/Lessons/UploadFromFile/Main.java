@@ -16,7 +16,7 @@ public class Main<T> {
 
         Scanner scan = UploadFile();
 
-        Set<Street> streets = parseString(scan);
+        var streets = uploadObjectsFromFile(scan, "Street");
 
 //        List<Map> streetsList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Street".equals(s.get("class"))).collect(Collectors.toList());
 //        List<Map> parksList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Park".equals(s.get("class"))).collect(Collectors.toList());
@@ -43,10 +43,12 @@ public class Main<T> {
         return new Scanner(bufferedReader);
     }
 
-    private static <T extends CityObject> Set<T> parseString(Scanner scan) {
+    private static <T extends CityObject> Set<T> uploadObjectsFromFile(Scanner scan, String nameClass) {
         Set<T> citiesObjectsSet = null;
+        Map<String, String> oneObjectFromLine = null;
         while (scan.hasNextLine()) {
-            Map<String, String> oneObjectFromLine = parseLine(scan.nextLine());
+            oneObjectFromLine parseLine(scan.nextLine());
+            List<Map> streetsList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Street".equals(s.get("class"))).collect(Collectors.toList());
             if (Objects.nonNull(oneObjectFromLine)){
                 citiesObjectsSet.add(createCitiesObject(oneObjectFromLine));
 //                citiesObjectsSet.add(new <T>(oneObjectFromLine.get("name"), oneObjectFromLine.get("lenght"), oneObjectFromLine.get("width")));
