@@ -68,4 +68,8 @@ public class Street implements AreaSize{
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    public boolean inMain() {
+        return true;
+    }
 }

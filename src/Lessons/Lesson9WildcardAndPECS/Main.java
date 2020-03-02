@@ -6,7 +6,10 @@ import Lessons.Lesson9WildcardAndPECS.yet.another.fuckup.utils.StreetProcessing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,12 +37,18 @@ public class Main {
         City kostanay = new City();
         kostanay.addStreet(new Street("Аль-фараби", 1000, 8));
         kostanay.addStreet(new Street("Интернационалистов", 1000, 8));
+        kostanay.addStreet(null);
         List<City> cities = List.<City>of(city, kostanay);
 
-        Set<AreaSize> streets1 = StreetProcessing.findAllStreets(cities);
-//        Set<Street> consumer = null;
-        //streets1.fillStreetResult(consumer, streets);
+        int i = AreaCalculator.calcAreaForMainStreets(kostanay.getStreets(), 10000);
+        System.out.println(i);
+
+
 
     }
 
+}
+
+interface CalcIt {
+    int calcIt(int lenght, int width);
 }

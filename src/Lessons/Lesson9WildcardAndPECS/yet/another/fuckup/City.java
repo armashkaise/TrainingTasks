@@ -22,7 +22,7 @@ public class City {
     }
 
     public void addStreet(Street street){
-        if (Objects.nonNull(street))
+//        if (Objects.nonNull(street))
             streets.add(street);
     }
 
