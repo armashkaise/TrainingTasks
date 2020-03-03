@@ -1,6 +1,8 @@
 package Lessons.UploadFromFile;
 
 import Lessons.Lesson9Collections.Task1.CityObject;
+import Lessons.Lesson9WildcardAndPECS.yet.another.fuckup.AreaSize;
+import Lessons.Lesson9WildcardAndPECS.yet.another.fuckup.Park;
 import Lessons.Lesson9WildcardAndPECS.yet.another.fuckup.Street;
 
 import java.io.BufferedReader;
@@ -9,62 +11,62 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main<T> {
     public static void main(String[] args) {
-
-
         Scanner scan = UploadFile();
-
         var streets = uploadObjectsFromFile(scan, "Street");
-
-//        List<Map> streetsList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Street".equals(s.get("class"))).collect(Collectors.toList());
-//        List<Map> parksList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Park".equals(s.get("class"))).collect(Collectors.toList());
-
-//        System.out.println(streetsList);
-//        System.out.println(parksList);
+        scan = UploadFile();
+        var parks = uploadObjectsFromFile(scan, "Park");
+        System.out.println(streets);
+        System.out.println(parks);
 
     }
 
     private static Scanner UploadFile() {
         URL location = Main.class.getProtectionDomain().getCodeSource().getLocation();
-//        Set<Map> stringsMap = new HashSet<>();
         File file = new File(location.getFile() + "/citiesObjects.txt");
         FileReader fileReader = null;
-
         try {
             fileReader = new FileReader(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         Scanner scan = new Scanner(bufferedReader);
         return new Scanner(bufferedReader);
     }
 
-    private static <T extends CityObject> Set<T> uploadObjectsFromFile(Scanner scan, String nameClass) {
-        Set<T> citiesObjectsSet = null;
-        Map<String, String> oneObjectFromLine = null;
+    private static <T extends AreaSize> Set<T> uploadObjectsFromFile(Scanner scan, String nameClass) {
+        Set<T> citiesObjectsSet = new HashSet<>();
+        Set<Map<String, String>> allSitiesObjects = new HashSet<>();
+
         while (scan.hasNextLine()) {
-            oneObjectFromLine parseLine(scan.nextLine());
-            List<Map> streetsList = stringsMap.stream().peek(s -> s.values()).filter(s -> "Street".equals(s.get("class"))).collect(Collectors.toList());
-            if (Objects.nonNull(oneObjectFromLine)){
-                citiesObjectsSet.add(createCitiesObject(oneObjectFromLine));
-//                citiesObjectsSet.add(new <T>(oneObjectFromLine.get("name"), oneObjectFromLine.get("lenght"), oneObjectFromLine.get("width")));
-            }
-
-
-
+            allSitiesObjects.add(parseLine(scan.nextLine()));
         }
-        return null;
+        scan.close();
+        Set<Map> objectsSet = allSitiesObjects.stream().peek(s -> s.values()).filter(s -> nameClass.equals(s.get("class"))).collect(Collectors.toSet());
+        for (Map objectSet : objectsSet) {
+            citiesObjectsSet.add(createCitiesObject((Map<String, String>) objectSet));
+        }
+        return citiesObjectsSet;
     }
 
-    private static Street createCitiesObject(Map<String, String> oneObjectFromLine) {
-        String name = oneObjectFromLine.get("name");
-        int lenght = Integer.parseInt(oneObjectFromLine.get("lenght"));
-        int width = Integer.parseInt(oneObjectFromLine.get("width"));
-        return new Street(name, lenght, width);
+    private static  <T extends AreaSize> T createCitiesObject(Map<String, String> oneObjectFromLine) {
+        T newObject = null;
+        String nameClass = oneObjectFromLine.get("class");
+        String name = oneObjectFromLine.get("name").trim();
+        int lenght = Integer.parseInt(oneObjectFromLine.get("lenght").trim());
+        int width = Integer.parseInt(oneObjectFromLine.get("width").trim());
+        if (nameClass.equals("Street")) {
+            newObject = (T) new Street(name, lenght, width);
+        }
+        if (nameClass.equals("Park")) {
+            newObject = (T) new Park(name, lenght, width);
+        }
+
+        return newObject;
     }
 
     private static Map<String, String> parseLine(String nextLine) {
@@ -74,7 +76,6 @@ public class Main<T> {
             String[] s = split[i].split(":");
             String key = s[0].trim();
             String value = checkValue(key, s[1]);
-
             if (Objects.nonNull(key) && Objects.nonNull(value))
                 currentMap.put(key, value);
         }
@@ -86,5 +87,4 @@ public class Main<T> {
             return UUID.randomUUID().toString();
         return value;
     }
-
 }
