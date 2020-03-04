@@ -13,12 +13,12 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Main<T> {
+public class Main<T extends AreaSize> {
     public static void main(String[] args) {
         Scanner scan = UploadFile();
-        var streets = uploadObjectsFromFile(scan, "Street");
+        Set<Street> streets = uploadObjectsFromFile(scan, "Street");
         scan = UploadFile();
-        var parks = uploadObjectsFromFile(scan, "Park");
+        Set<Park> parks = uploadObjectsFromFile(scan, "Park");
         System.out.println(streets);
         System.out.println(parks);
 
