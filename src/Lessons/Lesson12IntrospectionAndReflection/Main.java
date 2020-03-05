@@ -2,12 +2,15 @@ package Lessons.Lesson12IntrospectionAndReflection;
 
 import Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.CorporateWorkes;
 import Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager;
+import Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Uploader;
+import Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Worker;
 //import Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager;
 
 import java.lang.reflect.*;
+import java.util.Scanner;
 import java.util.Set;
 
-import static Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Uploader.upload;
+import static Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Uploader.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -73,8 +76,11 @@ public class Main {
         System.out.println();
 //**********************************************************************************************************************
         System.out.println("загрузка из файл Menegers и работа с ними через getters и setters");
-        Set<?> sets = upload();
 
+        Scanner scanner = connectToFile();
+        Set setOfObjects = uploadObjectsFromFile(scanner);
+        Set<Manager> menegers = Uploader.<Manager>selectObjects(setOfObjects);
+        Set<Worker> workers = selectObjects(setOfObjects);
 //        Set<Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager> streets = uploadObjectsFromFile(scan);
 
 

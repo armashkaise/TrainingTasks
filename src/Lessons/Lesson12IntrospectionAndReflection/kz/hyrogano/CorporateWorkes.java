@@ -16,4 +16,6 @@ public abstract class CorporateWorkes {
     public abstract int getAge();
 
     public abstract void setAge(int age);
+
+
 }

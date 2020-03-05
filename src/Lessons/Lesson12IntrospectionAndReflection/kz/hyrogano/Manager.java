@@ -29,7 +29,7 @@ public class Manager extends CorporateWorkes {
 
     @Override
     public String toString() {
-        return "Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager{" +
+        return "Manager{" +
                 "name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
                 ", age=" + age +
