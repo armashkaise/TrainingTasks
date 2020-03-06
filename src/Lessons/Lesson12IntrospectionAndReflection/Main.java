@@ -41,10 +41,10 @@ public class Main {
         System.out.println();
 
         System.out.println("выбрать разные методы с разным количеством параметров");
-//        Class<Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager> managerClass1 = Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager.class;
-//        Method methodGetName = managerClass.getDeclaredMethod("getName");
-//        methodGetName.setAccessible(true);
-//        System.out.println("method without parameters: " + methodGetName.getName());
+        Class<Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager> managerClass1 = Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager.class;
+        Method methodGetName = managerClass.getDeclaredMethod("getName");
+        methodGetName.setAccessible(true);
+        System.out.println("method without parameters: " + methodGetName.getName());
 
         CorporateWorkes realManager = new Manager();
 
@@ -76,13 +76,17 @@ public class Main {
         System.out.println();
 //**********************************************************************************************************************
         System.out.println("загрузка из файл Menegers и работа с ними через getters и setters");
-
         Scanner scanner = connectToFile();
         Set setOfObjects = uploadObjectsFromFile(scanner);
-        Set<Manager> menegers = Uploader.<Manager>selectObjects(setOfObjects);
-        Set<Worker> workers = selectObjects(setOfObjects);
-//        Set<Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Manager> streets = uploadObjectsFromFile(scan);
-
+        Set<Manager> menegers = Uploader.<Manager>selectObjects(setOfObjects, Manager.class);
+        Set<Worker> workers = selectObjects(setOfObjects, Worker.class);
+        for (Manager meneger : menegers) {
+            System.out.println(meneger);
+        }
+        System.out.println();
+        for (Worker worker : workers) {
+            System.out.println(worker);
+        }
 
     }
 

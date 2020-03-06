@@ -19,21 +19,15 @@ import java.util.stream.Stream;
 
 public class Uploader<T> {
     
-    public static <T> Set<T> selectObjects(Set setOfObjects) {
-        determinClassToGeneric(Uploader.class);
+    public static <T> Set<T> selectObjects(Set setOfObjects, Class className) {
+
         Stream stream = setOfObjects.stream();
-        Object collect = stream.peek(s -> s.getClass())
-                .filter(s -> s<T>)
+        var collect = (Set<T>) stream
+                .filter(s -> className.equals(s.getClass()))
                 .collect(Collectors.toSet());
 
 
-        return null;
-    }
-
-    private static void determinClassToGeneric(Class<Uploader> uploaderClass) {
-        ParameterizedType t = (ParameterizedType) uploaderClass.getClass().getGenericSuperclass();
-        Class<?> cls = (Class<?>) t.getActualTypeArguments()[0];
-        System.out.println(cls); // напечатает TestClass#GenericClass
+        return collect;
     }
 
     public static Scanner connectToFile() {
@@ -52,12 +46,7 @@ public class Uploader<T> {
         Set<T> corporateWorkesList = new HashSet<>();
         while (scan.hasNextLine()){
             corporateWorkesList.add(createObjectFromLine(parseLine(scan.nextLine())));
-
         }
-
-
-
-
         return (T) corporateWorkesList;
     }
 
