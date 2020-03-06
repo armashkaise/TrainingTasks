@@ -11,6 +11,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import static Lessons.Lesson12IntrospectionAndReflection.kz.hyrogano.Uploader.*;
+//import static jdk.internal.org.jline.utils.Colors.s;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -76,18 +77,12 @@ public class Main {
         System.out.println();
 //**********************************************************************************************************************
         System.out.println("загрузка из файл Menegers и работа с ними через getters и setters");
-        Scanner scanner = connectToFile();
-        Set setOfObjects = uploadObjectsFromFile(scanner);
-        Set<Manager> menegers = Uploader.<Manager>selectObjects(setOfObjects, Manager.class);
+        Set setOfObjects = uploadObjectsFromFile();
+        Set<Manager> menegers = selectObjects(setOfObjects, Manager.class);
         Set<Worker> workers = selectObjects(setOfObjects, Worker.class);
-        for (Manager meneger : menegers) {
-            System.out.println(meneger);
-        }
         System.out.println();
-        for (Worker worker : workers) {
-            System.out.println(worker);
-        }
-
+        menegers.forEach(System.out::println);
+        workers.forEach(System.out::println);
     }
 
 

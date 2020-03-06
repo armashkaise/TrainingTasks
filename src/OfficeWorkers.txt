@@ -1,0 +1,6 @@
+class:manager; name:Ivan; surname:Ivanov; age:21;
+class:worker; name:Kirill; surname:Kirillov; age:25;
+class:manager; name:Petr; surname:Petrov; age:25;
+class:worker; name:Serik; surname:Serikov; age:35;
+class:manager; name:Sidr; surname:Sidorov; age:30;
+class:worker; name:Andrey; surname:Andreev; age:41;
